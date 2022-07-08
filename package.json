@@ -1,0 +1,34 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "test for Luxsoft",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest test/pages/Main.Page.js --detectOpenHandles --no-cache --unhandled-rejections=strict",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savic1111/test.git"
+  },
+  "author": "Alex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/savic1111/test/issues"
+  },
+  "homepage": "https://github.com/savic1111/test#readme",
+  "devDependencies": {
+    "axios": "^0.27.2",
+    "browser-pool": "^3.1.4",
+    "jest": "^28.1.2",
+    "jest-puppeteer": "^6.1.1",
+    "lodash": "^4.17.21",
+    "pino": "^8.1.0",
+    "properties-reader": "^2.2.0",
+    "puppeteer": "^15.3.2",
+    "unique-random-array": "^3.0.0"
+  },
+  "dependencies": {
+    "random-country": "^1.0.1"
+  }
+}
