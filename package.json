@@ -29,6 +29,7 @@
     "unique-random-array": "^3.0.0"
   },
   "dependencies": {
+    "cypress": "^12.13.0",
     "random-country": "^1.0.1"
   }
 }
