@@ -1,18 +1,22 @@
 const users = require("../fixtures/users_credential.json")
 const users_incorrect = require("../fixtures/users_incorrect.json")
 
-const LoginObjects = require("../../src/pageObjects/main/fragments/Login.js");
+
 const ComponentFactory = require("../../src/factory/ComponentFactory");
-const SSOLogin = require("../../src/pageObjects/main/fragments/SSOLogin");
-const ResetPasswordObjects = require("../../src/pageObjects/main/fragments/ResetPassword");
+const ResetPassword = require("../../src/pageObjects/main/fragments/ResetPassword");
 
 
 const factory = new ComponentFactory();
 
-const loginObjects = factory.create('Login'); 
+const ResetPasswordObjects = factory.create('ResetPassword'); 
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false;
+});
 
 
 describe('Reset Password', async () => {
+
     beforeEach(() => {
         cy.visit('reset-password');
     })
@@ -22,17 +26,35 @@ describe('Reset Password', async () => {
     })
 
     it('Submit empty email', () => {
-        loginObjects.clickSubmit();
+        ResetPasswordObjects.clickSubmit()
         cy.contains('Please enter a valid email')
     })
-    it('Input Email', () => {
-        cy.get('input[name="email"]').type(users.email)
-        loginObjects.clickSubmit();
+
+    it('Input correct email', () => {
+        ResetPasswordObjects.typeEmail(users.email)
+        ResetPasswordObjects.clickSubmit()
+
+        ResetPasswordObjects.checkSuccessPopup()
+        cy.contains("We've sent an email to")
     })
 
     it('Back to Login Page', () => {
-        cy.get(ResetPasswordObjects.back).click()
+        ResetPasswordObjects.backToLogin()
         cy.url().should('include', '/login')
     })
 
+})
+
+describe('Negative Reset Pass Test', () => {
+
+    beforeEach(() => {
+        cy.visit('reset-password');
+    })
+
+    it('Input incorrect email', () => {
+        ResetPasswordObjects.typeEmail(users_incorrect.broken_email)
+        ResetPasswordObjects.clickSubmit()
+
+        cy.contains('Please enter a valid email')
+    })
 })

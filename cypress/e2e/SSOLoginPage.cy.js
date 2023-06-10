@@ -1,16 +1,20 @@
 const users = require("../fixtures/users_credential.json")
+const users_incorrect = require("../fixtures/users_incorrect.json")
 
-const LoginObjects = require("../../src/pageObjects/main/fragments/Login.js");
 const ComponentFactory = require("../../src/factory/ComponentFactory");
 const SSOLogin = require("../../src/pageObjects/main/fragments/SSOLogin");
 
 
 const factory = new ComponentFactory();
 
-const loginObjects = factory.create('Login'); 
+const SSOloginObjects = factory.create('SSOLogin'); 
 
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false;
+});
 
 describe('Positive SSoLogin Tests', () => {
+
     beforeEach(() => {
         cy.visit('ssologin');
     })
@@ -22,24 +26,40 @@ describe('Positive SSoLogin Tests', () => {
 
     it('Input correct email', () => {
 
-        cy.get('input[type="email"]').type(users.email)
-       
-        cy.get('button[type="submit"]').should('be.enabled')
-        loginObjects.clickSubmit();
+        SSOloginObjects.typeEmail(users.email)
+
+        SSOloginObjects.checkStatusSubmit('be.enabled')
+        SSOloginObjects.clickSubmit()
+
+        //cy.url().should('contain', /personal-page/)
     })
 
     it('Back to Login Page', () => {
-        cy.get(SSOLogin.back).click()
+        SSOloginObjects.backToLogin()
         cy.url().should('include', '/login')
     })
 
 
     it('Learn More About', () => {
         cy.get(SSOLogin.learn).invoke('removeAttr', 'target').click()
-       
-       // cy.url().should('include', 'https://support.abtasty.com')
+        cy.url().should('include', Cypress.env('SUPPORT_URL'))
      })
 
 })
 
-describe('Negative SSOLogin Tests', () => { })
+describe('Negative SSOLogin Tests', () => {
+
+    beforeEach(() => {
+        cy.visit('ssologin');
+    })
+
+    it('Input incorrect email', () => {
+
+        SSOloginObjects.typeEmail(users_incorrect.email)
+
+        SSOloginObjects.checkStatusSubmit('be.enabled')
+        SSOloginObjects.clickSubmit()
+
+        cy.contains('Please enter a valid email')
+    })
+})

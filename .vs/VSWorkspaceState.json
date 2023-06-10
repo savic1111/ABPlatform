@@ -1,14 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\cypress\\api",
-    "\\cypress\\e2e",
+    "\\cypress",
+    "\\cypress\\fixtures",
+    "\\src",
+    "\\src\\data",
     "\\src\\pageElements",
     "\\src\\pageObjects",
     "\\src\\pageObjects\\iFrames",
     "\\src\\pageObjects\\main",
     "\\src\\pageObjects\\main\\fragments"
   ],
-  "SelectedNode": "\\cypress",
+  "SelectedNode": "\\cypress\\fixtures\\users_incorrect.json",
   "PreviewInSolutionExplorer": false
 }

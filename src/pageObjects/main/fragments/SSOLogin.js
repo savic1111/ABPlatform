@@ -1,8 +1,9 @@
-class SSOLogin {
+const Login = require("./Login")
+
+class SSOLogin  extends Login {
   
-    constructor()
-    {
-     
+    static get email_field() {
+        return 'input[type="email"]';
     }
 
     static get learn() {
@@ -12,6 +13,18 @@ class SSOLogin {
     static get back() {
         return 'a[class="SSOLoginPage__back___i88JC"]';
     }
+
+    backToLogin() {
+        cy.get(SSOLogin.back).click()
+    }
+
+    
+    typeEmail(email) {
+        cy.get(SSOLogin.email_field)
+            .type(email);
+    }
+
+
    
   }
       

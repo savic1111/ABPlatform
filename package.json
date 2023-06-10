@@ -20,12 +20,12 @@
   "devDependencies": {
     "axios": "^0.27.2",
     "browser-pool": "^3.1.4",
-    "jest": "^28.1.2",
-    "jest-puppeteer": "^6.1.1",
+    "cypress-dotenv": "^2.0.0",
+    "dotenv": "^16.1.4",
+    "eslint-plugin-cypress": "^2.13.3",
     "lodash": "^4.17.21",
     "pino": "^8.1.0",
     "properties-reader": "^2.2.0",
-    "puppeteer": "^15.3.2",
     "unique-random-array": "^3.0.0"
   },
   "dependencies": {

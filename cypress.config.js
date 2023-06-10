@@ -1,7 +1,15 @@
 const { defineConfig } = require("cypress");
+require('dotenv').config()
 
 module.exports = defineConfig({
-  e2e: {
+
+    env: {
+        SUPPORT_URL: 'https://support.abtasty.com',
+        LOGIN_URL: 'https://app2.abtasty.com/login',
+        SSO_URL: 'https://app2.abtasty.com/ssologin',
+        PASSSWORD_URL: 'https://app2.abtasty.com/reset-password',
+    },
+    e2e: {
     chromeWebSecurity: false,
     defaultCommandTimeout: 7000,
     execTimeout: 80000,
@@ -10,9 +18,9 @@ module.exports = defineConfig({
     baseUrl: "https://app2.abtasty.com/",
     userAgent:
       "Mozilla / 5.0(platform; rv: geckoversion) Gecko / geckotrail Firefox / firefoxversion",
-    viewportWidth: 400,
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
+    viewportWidth: 1000,
+        setupNodeEvents(on, config) {
+            config.env = config.env || {}
     },
   },
 

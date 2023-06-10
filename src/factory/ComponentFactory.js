@@ -1,4 +1,6 @@
 const Login = require("../pageObjects/main/fragments/Login");
+const ResetPassword = require("../pageObjects/main/fragments/ResetPassword");
+const SSOLogin = require("../pageObjects/main/fragments/SSOLogin");
 
 class ComponentFactory {
 
@@ -7,12 +9,10 @@ class ComponentFactory {
         let page;
         if (type === 'Login') {
             page = new Login()
-        } else if (type === 'parttime') {
-            employee = new PartTime()
-        } else if (type === 'temporary') {
-            employee = new Temporary()
-        } else if (type === 'contractor') {
-            employee = new Contractor()
+        } else if (type === 'SSOLogin') {
+            page = new SSOLogin()
+        } else if (type === 'ResetPassword') {
+            page = new ResetPassword()
         }
 
         return page;
