@@ -24,7 +24,7 @@ s
     }
 
     static get sso() {
-        return 'button[class="_button_1qtjo_184 _primaryColor_1qtjo_213 _mediumSize_1qtjo_184 _outlinedVariant_1qtjo_223 LoginForm__ssoLogin___zCNI6"]';
+        return 'button[class="_button_18oz0_184 _primaryColor_18oz0_213 _mediumSize_18oz0_184 _outlinedVariant_18oz0_223 LoginForm__ssoLogin___zCNI6"]';
     }
 
     static get googleAuth() {

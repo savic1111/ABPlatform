@@ -9,7 +9,13 @@ module.exports = defineConfig({
         SSO_URL: 'https://app2.abtasty.com/ssologin',
         PASSSWORD_URL: 'https://app2.abtasty.com/reset-password',
     },
+
     e2e: {
+    specPattern: ['cypress/e2e/*.cy.{js,jsx,ts,tsx}', 'cypress/api/*.cy.{js,jsx,ts,tsx}'],
+    screenshotOnRunFailure:true,
+    waitForAnimations:true,
+    slowTestThreshold:30000,
+    testIsolation:true,
     chromeWebSecurity: false,
     defaultCommandTimeout: 7000,
     execTimeout: 80000,
